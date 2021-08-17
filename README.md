@@ -64,6 +64,11 @@ You can find a full working example [here](https://github.com/alexboia/LVD-Fluen
 ## Styling
 
 You can either directly include the `dist/style.css` into your `html` web page or use the `@import` directive inside your stylesheet if building using webpack:
+If you need to customize the default styling or provide a new one altoghether, you may find this component layout diagram useful:
+
+<p align="left">
+	<img align="center" src="https://raw.githubusercontent.com/alexboia/LVD-FluentUi-LoginBox/main/docs/ComponentLayout.png" style="margin-bottom: 20px; margin-right: 20px; border-radius: 5px;" />
+</p>
 
 ```css
 @import '~lvd-fluentui-loginbox/dist/style.css';
