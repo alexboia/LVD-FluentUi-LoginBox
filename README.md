@@ -61,6 +61,34 @@ class LoginPage extends React.Component {
 
 You can find a full working example [here](https://github.com/alexboia/LVD-FluentUi-LoginBox/blob/main/src/App.jsx).
 
+## Styling
+
+You can either directly include the `dist/style.css` into your `html` web page or use the `@import` directive inside your stylesheet if building using webpack:
+
+```css
+@import '~lvd-fluentui-loginbox/dist/style.css';
+```
+
+## Building
+
+To build the demo application: 
+
+```
+npm run build-app
+```
+
+To build the library: 
+
+```
+npm run build-dist
+```
+
+To build both in one sitting: 
+
+```
+npm run build
+```
+
 ## Customization Options
 
 | What | Prop Name | Type | Notes |
