@@ -69,8 +69,8 @@ You can find a full working example [here](https://github.com/alexboia/LVD-Fluen
 | Message | `messageProps` | `Message Object` | See below. By default no message is shown. |
 | Username field | `userNameProps` | `Username Customization Object` | See below. |
 | Password field | `passwordProps` | `Password Customization Object` | See below. |
-| Log-in button | `loginActionButtonProps` | `Log-in Action Button Customization Object` | See below. By default the label is set to `Log-in` |
-| Forgot password button | `passwordRecoveryActionButtonProps` | `Password Recovery Action Button Customization Object` | See below. By default the label is set to `Forgot password?` and the button is shown. |
+| Log-in button | `loginActionButtonProps` | `Log-in Action Button Customization Object` | See below. |
+| Forgot password button | `passwordRecoveryActionButtonProps` | `Password Recovery Action Button Customization Object` | See below. |
 
 All the default values are defined [here](https://github.com/alexboia/LVD-FluentUi-LoginBox/blob/main/src/components/LoginBoxDefaults.js).
 
@@ -174,7 +174,7 @@ A plain javascript object with the following properties:
 
 | Name | Type | Notes |
 | --- | --- | --- |
-| `label` | `string` | Button label. Defaults to `Log-in:` |
+| `label` | `string` | Button label. Defaults to `Log-in` |
 
 Example: 
 
@@ -190,23 +190,33 @@ Example:
 
 ### Password Recovery Action Button Customization Object
 
-```javascript
-{
-	label: "<actual label text>",
-	show: <true|false>
-}
-```
+A plain javascript object with the following properties:
 
+| Name | Type | Notes |
+| --- | --- | --- |
+| `label` | `string` | Button label. Defaults to `Forgot password?` |
+| `show` | `boolean` | Whether to show the button or not. Defaults to `true` if not specified. |
+
+Example: 
+
+```javascript
+<LoginBox 
+	...
+	passwordRecoveryActionButtonProps={{
+		label: "I forgot my password",
+		show: true
+	}}
+	...
+/>
+```
 ## Login Values Object
 
-The login values are exported as a plain javascript object:
+The login values are exported as a plain javascript object with the following properties:
 
-```javascript
-{
-	userName: "<username>",
-	password: "<password>"
-}
-```
+| Name | Type | Notes |
+| --- | --- | --- |
+| `userName` | `string` | - |
+| `password` | `string` | - |
 
 ## Events
 
