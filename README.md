@@ -65,39 +65,81 @@ You can find a full working example [here](https://github.com/alexboia/LVD-Fluen
 
 | What | Prop Name | Type | Notes |
 | --- | --- | --- | --- |
-| Component Title | `titleProps` | `Title Customization Object` | See below. By default the title is shown and the `Log-in` text is displayed. |
+| Component Title | `titleProps` | `Title Customization Object` | See below. |
 | Message | `messageProps` | `Message Object` | See below. By default no message is shown. |
-| Username field | `userNameProps` | `Username Customization Object` | See below. By default the label is set to `User name:`, the placeholder is set to `Please fill in the username` and the empty error message to `You must fill your username`. |
+| Username field | `userNameProps` | `Username Customization Object` | See below. |
 | Password field | `passwordProps` | `Password Customization Object` | See below. By default the label is set to `Password:`, the placeholder is set to `Please fill in the password`, the empty error message to `You must fill in your password` and field is configured to allow password reveal. |
 | Log-in button | `loginActionButtonProps` | `Log-in Action Button Customization Object` | See below. By default the label is set to `Log-in` |
 | Forgot password button | `passwordRecoveryActionButtonProps` | `Password Recovery Action Button Customization Object` | See below. By default the label is set to `Forgot password?` and the button is shown. |
 
+All the default values are defined [here](https://github.com/alexboia/LVD-FluentUi-LoginBox/blob/main/src/components/LoginBoxDefaults.js).
+
 ### Title Customization Object
 
+A plain javascript object with the following properties:
+
+| Name | Type | Notes |
+| --- | --- | --- |
+| `show` | `boolean` | Defaults to `true` if not specified.  |
+| `text` | `string` | Defaults to `Log-in` if not specified or empty.  |
+
+Example:
+
 ```javascript
-{
-	show: <true|false>,
-	text: "<actual title text>"
-}
+<LoginBox 
+	...
+	titleProps={{
+		show: true,
+		text: "Log-in to access your account"
+	}}
+	...
+/>
 ```
 
 ### Message Object
 
+A plain javascript object with the following properties:
+
+| Name | Type | Notes |
+| --- | --- | --- |
+| `message` | `string` | The actual message to be displayed. Defaults to `null` if not specified.  |
+| `type` | `LoginBoxMessageType` | Type of message - used for formatting (error, warning etc.). Defaults to `null` if not specified. See [here for all supported values](https://github.com/alexboia/LVD-FluentUi-LoginBox/blob/main/src/components/LoginBoxMessageType.js).  |
+
+Example:
+
 ```javascript
-{
-	message: "<actual message>",
-	type: <LoginBoxMessageType.info|success|severeWarning|warning|blocked|error>
-}
+<LoginBox 
+	...
+	messageProps={{
+		message: "Invalid credentials provided",
+		type: LoginBoxMessageType.error
+	}}
+	...
+/>
 ```
 
 ### Username Customization Object
 
+A plain javascript object with the following properties:
+
+| Name | Type | Notes |
+| --- | --- | --- |
+| `label` | `string` | Field label. Defaults to `User name:` |
+| `placeholder` | `string` | Field placeholder. Defaults to `Please fill in the username` |
+| `emptyErrorMessage` | `string` | Error message displayed when the field is left empty. Defaults to `You must fill your username` |
+
+Example:
+
 ```javascript
-{
-	label: "<actual label text>",
-	placeholder: "<actual placeholder text>",
-	emptyErrorMessage: "<actual messsage to be displayed when the field is empty>"
-}
+<LoginBox 
+	...
+	userNameProps={{
+		label: "User:",
+		placeholder: "The username you set upon registration.",
+		emptyErrorMessage: "The username is required!"
+	}}
+	...
+/>
 ```
 
 ### Password Customization Object
