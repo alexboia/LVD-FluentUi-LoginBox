@@ -68,7 +68,7 @@ You can find a full working example [here](https://github.com/alexboia/LVD-Fluen
 | Component Title | `titleProps` | `Title Customization Object` | See below. |
 | Message | `messageProps` | `Message Object` | See below. By default no message is shown. |
 | Username field | `userNameProps` | `Username Customization Object` | See below. |
-| Password field | `passwordProps` | `Password Customization Object` | See below. By default the label is set to `Password:`, the placeholder is set to `Please fill in the password`, the empty error message to `You must fill in your password` and field is configured to allow password reveal. |
+| Password field | `passwordProps` | `Password Customization Object` | See below. |
 | Log-in button | `loginActionButtonProps` | `Log-in Action Button Customization Object` | See below. By default the label is set to `Log-in` |
 | Forgot password button | `passwordRecoveryActionButtonProps` | `Password Recovery Action Button Customization Object` | See below. By default the label is set to `Forgot password?` and the button is shown. |
 
@@ -144,21 +144,48 @@ Example:
 
 ### Password Customization Object
 
+A plain javascript object with the following properties:
+
+| Name | Type | Notes |
+| --- | --- | --- |
+| `label` | `string` | Field label. Defaults to `Password:` |
+| `placeholder` | `string` | Field placeholder. Defaults to `Please fill in the password` |
+| `emptyErrorMessage` | `string` | Error message displayed when the field is left empty. Defaults to `You must fill in your password` |
+| `canReveal` | `boolean` | Whether or not to offer the option of revealing the password. Defaults to `true` if not specified |
+
+Example:
+
 ```javascript
-{
-	label: "<actual label text>",
-	placeholder: "<actual placeholder text>",
-	emptyErrorMessage: "<actual messsage to be displayed when the field is empty>",
-	canReveal: <true|false>
-}
+<LoginBox 
+	...
+	passwordProps={{
+		label: "Password:",
+		placeholder: "The password you set upon registration.",
+		emptyErrorMessage: "The password is required!"
+		canReveal: false
+	}}
+	...
+/>
 ```
 
 ### Log-in Action Button Customization Object
 
+A plain javascript object with the following properties:
+
+| Name | Type | Notes |
+| --- | --- | --- |
+| `label` | `string` | Button label. Defaults to `Log-in:` |
+
+Example: 
+
 ```javascript
-{
-	label: "<actual label text>"
-}
+<LoginBox 
+	...
+	loginActionButtonProps={{
+		label: "Sign-in"
+	}}
+	...
+/>
 ```
 
 ### Password Recovery Action Button Customization Object
