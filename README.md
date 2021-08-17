@@ -16,15 +16,29 @@ Here's a screenshot of how it all looks like [using the default styling](https:/
 	<img align="center" src="https://raw.githubusercontent.com/alexboia/LVD-FluentUi-LoginBox/main/docs/Sample.png" style="margin-bottom: 20px; margin-right: 20px; border-radius: 5px;" />
 </p>
 
+## Contents
+
+1. [Installation](#lb-installation)
+2. [Demo](#lb-demo)
+3. [Basic Usage](#lb-basic-usage)
+4. [Styling](#lb-styling)
+5. [Styling](#lb-building)
+6. [Customization Options](#lb-customization)
+7. [Events](#lb-events)
+8. [Donate](#lb-donate)
+
 ## Installation
+<a name="lb-installation"></a>
 
 `npm install --save lvd-fluentui-loginbox`
 
 ## Demo
+<a name="lb-demo"></a>
 
 The `demo` directory contains [a compiled and ready-to-run example](https://github.com/alexboia/LVD-FluentUi-LoginBox/tree/main/demo). Just open up the `index.html` file.
 
 ## Basic Usage
+<a name="lb-basic-usage"></a>
 
 ```javascript
 import React from 'react';
@@ -62,8 +76,14 @@ class LoginPage extends React.Component {
 You can find a full working example [here](https://github.com/alexboia/LVD-FluentUi-LoginBox/blob/main/src/App.jsx).
 
 ## Styling
+<a name="lb-styling"></a>
 
 You can either directly include the `dist/style.css` into your `html` web page or use the `@import` directive inside your stylesheet if building using webpack:
+
+```css
+@import '~lvd-fluentui-loginbox/dist/style.css';
+```
+
 If you need to customize the default styling or provide a new one altoghether, you may find this component layout diagram useful:
 
 <p align="left">
@@ -72,11 +92,8 @@ If you need to customize the default styling or provide a new one altoghether, y
 
 Also see [the component itself](https://github.com/alexboia/LVD-FluentUi-LoginBox/blob/main/src/components/LoginBox.jsx).
 
-```css
-@import '~lvd-fluentui-loginbox/dist/style.css';
-```
-
 ## Building
+<a name="lb-building"></a>
 
 To build the demo application: 
 
@@ -97,6 +114,7 @@ npm run build
 ```
 
 ## Customization Options
+<a name="lb-customization"></a>
 
 | What | Prop Name | Type | Notes |
 | --- | --- | --- | --- |
@@ -245,6 +263,7 @@ Example:
 />
 ```
 ## Login Values Object
+<a name="lb-login-values"></a>
 
 The login values are exported as a plain javascript object with the following properties:
 
@@ -254,6 +273,7 @@ The login values are exported as a plain javascript object with the following pr
 | `password` | `string` | - |
 
 ## Events
+<a name="lb-events"></a>
 
 | Event | Prop Name | Arguments | Notes |
 | --- | --- | --- | --- |
@@ -263,6 +283,7 @@ The login values are exported as a plain javascript object with the following pr
 | Component disposed | `onLoginFormDisposed` | `Login Values Object` | Triggered when the component is un-mounted by `React` |
 
 ## Donate
+<a name="lb-donate"></a>
 
 I put some of my free time into developing and maintaining this plugin.
 If helped you in your projects and you are happy with it, you can...
