@@ -2,6 +2,10 @@
 	"name": "lvd-fluentui-loginbox",
 	"version": "0.0.1",
 	"description": "A ReactJS login box built using the FluentUI library",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/alexboia/LVD-FluentUi-LoginBox"
+	},
 	"main": "dist/index.umd2.js",
 	"scripts": {
 		"build-app": "@powershell -NoProfile -ExecutionPolicy Unrestricted -Command ./build-app.ps1",

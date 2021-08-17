@@ -11,7 +11,7 @@ It features a basic structure, with customization options for each element:
 - a password recovery button, which can be hidden.
 
 <p align="center">
-	<img align="center" width="210" height="210" src="https://github.com/alexboia/LVD-FluentUi-LoginBox/blob/master/docs/Sample.png?raw=true" style="margin-bottom: 20px; margin-right: 20px; border-radius: 5px;" />
+	<img align="center" width="210" height="210" src="https://raw.githubusercontent.com/alexboia/LVD-FluentUi-LoginBox/main/docs/Sample.png?raw=true" style="margin-bottom: 20px; margin-right: 20px; border-radius: 5px;" />
 </p>
 
 ## Installation
