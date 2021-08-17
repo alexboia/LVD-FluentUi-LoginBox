@@ -70,6 +70,8 @@ If you need to customize the default styling or provide a new one altoghether, y
 	<img align="center" src="https://raw.githubusercontent.com/alexboia/LVD-FluentUi-LoginBox/main/docs/ComponentLayout.png" style="margin-bottom: 20px; margin-right: 20px; border-radius: 5px;" />
 </p>
 
+Also see [the component itself](https://github.com/alexboia/LVD-FluentUi-LoginBox/blob/main/src/components/LoginBox.jsx).
+
 ```css
 @import '~lvd-fluentui-loginbox/dist/style.css';
 ```
