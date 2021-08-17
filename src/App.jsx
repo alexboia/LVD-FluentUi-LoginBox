@@ -119,6 +119,32 @@ export default class App extends React.Component {
 				onForgotPasswordRequested={this._handleForgotPasswordRequested}
 				onLoginValuesChanged={this._handleLoginValuesChanged}
 				messageProps={this.state.loginMessage}
+
+				titleProps={{
+					show: false
+				}}
+
+				userNameProps={{
+					label: "User:",
+					placeholder: "The username you set upon registration.",
+					emptyErrorMessage: "The username is required!"
+				}}
+
+				passwordProps={{
+					label: "Password:",
+					placeholder: "The password you set upon registration.",
+					emptyErrorMessage: "The password is required!",
+					canReveal: false
+				}}
+
+				loginActionButtonProps={{
+					label: "Sign-in"
+				}}
+
+				passwordRecoveryActionButtonProps={{
+					label: "I forgot my password!",
+					show: true
+				}}
 			/>
 		);
 	}
