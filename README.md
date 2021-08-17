@@ -189,7 +189,7 @@ Example:
 	passwordProps={{
 		label: "Password:",
 		placeholder: "The password you set upon registration.",
-		emptyErrorMessage: "The password is required!"
+		emptyErrorMessage: "The password is required!",
 		canReveal: false
 	}}
 	...
