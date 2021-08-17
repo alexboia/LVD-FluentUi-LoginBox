@@ -22,7 +22,7 @@ Here's a screenshot of how it all looks like [using the default styling](https:/
 2. [Demo](#lb-demo)
 3. [Basic Usage](#lb-basic-usage)
 4. [Styling](#lb-styling)
-5. [Styling](#lb-building)
+5. [Building](#lb-building)
 6. [Customization Options](#lb-customization)
 7. [Events](#lb-events)
 8. [Donate](#lb-donate)
