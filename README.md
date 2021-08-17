@@ -10,15 +10,19 @@ It features a basic structure, with customization options for each element:
 - a log-in button and; 
 - a password recovery button, which can be hidden.
 
-<p align="center">
-	<img align="center" width="210" height="210" src="https://raw.githubusercontent.com/alexboia/LVD-FluentUi-LoginBox/main/docs/Sample.png?raw=true" style="margin-bottom: 20px; margin-right: 20px; border-radius: 5px;" />
+Here's a screenshot of how it all looks like [using the default styling](https://github.com/alexboia/LVD-FluentUi-LoginBox/blob/main/src/css/components/login-box.css):
+
+<p align="left">
+	<img align="center" src="https://raw.githubusercontent.com/alexboia/LVD-FluentUi-LoginBox/main/docs/Sample.png" style="margin-bottom: 20px; margin-right: 20px; border-radius: 5px;" />
 </p>
 
 ## Installation
 
 `npm install --save lvd-fluentui-loginbox`
 
-## Live Demo
+## Demo
+
+The `demo` directory contains [a compiled and ready-to-run example](https://github.com/alexboia/LVD-FluentUi-LoginBox/tree/main/demo). Just open up the `index.html` file.
 
 ## Basic Usage
 
@@ -54,6 +58,8 @@ class LoginPage extends React.Component {
 	}
 }
 ```
+
+You can find a full working example [here](https://github.com/alexboia/LVD-FluentUi-LoginBox/blob/main/src/App.jsx).
 
 ## Customization Options
 
