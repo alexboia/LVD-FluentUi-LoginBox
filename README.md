@@ -254,3 +254,10 @@ The login values are exported as a plain javascript object with the following pr
 | Login requested | `onLoginRequested` | `Login Values Object` | Triggered when the `Log-in` button is clicked |
 | Password recovery requested | `onForgotPasswordRequested` | `Login Values Object` | Triggered when the `Forgot password` button is clicked |
 | Component disposed | `onLoginFormDisposed` | `Login Values Object` | Triggered when the component is un-mounted by `React` |
+
+## Donate
+
+I put some of my free time into developing and maintaining this plugin.
+If helped you in your projects and you are happy with it, you can...
+
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Q5Q01KGLM)
