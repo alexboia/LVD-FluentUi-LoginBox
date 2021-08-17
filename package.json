@@ -2,9 +2,13 @@
 	"name": "lvd-fluentui-loginbox",
 	"version": "0.0.1",
 	"description": "A ReactJS login box built using the FluentUI library",
+	"homepage": "https://github.com/alexboia/LVD-FluentUi-LoginBox",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/alexboia/LVD-FluentUi-LoginBox"
+		"url": "https://github.com/alexboia/LVD-FluentUi-LoginBox.git"
+	},
+	"bugs": {
+		"url": "https://github.com/alexboia/LVD-FluentUi-LoginBox/issues"
 	},
 	"main": "dist/index.umd2.js",
 	"scripts": {
