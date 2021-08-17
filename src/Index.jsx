@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { initializeIcons } from '@fluentui/react/lib/Icons';
+import { initializeIcons } from '@fluentui/react';
 
 import Root from './Root.jsx';
 

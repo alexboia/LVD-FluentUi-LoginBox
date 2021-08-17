@@ -28,7 +28,7 @@ The `demo` directory contains [a compiled and ready-to-run example](https://gith
 
 ```javascript
 import React from 'react';
-import LoginBox from 'lvd-fluentui-loginbox';
+import { LoginBox } from 'lvd-fluentui-loginbox';
 
 class LoginPage extends React.Component {
 	constructor(props) {

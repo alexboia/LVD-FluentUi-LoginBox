@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThemeProvider } from '@fluentui/react/lib/Theme';
+import { ThemeProvider } from '@fluentui/react';
 import App from './App.jsx';
 
 export default class Root extends React.Component {

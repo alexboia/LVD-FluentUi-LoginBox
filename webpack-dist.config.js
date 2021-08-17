@@ -21,14 +21,38 @@ module.exports = {
 	},
 
 	externals: {
-		'react': 'React',
-		'react-dom': 'ReactDOM',
-		'prop-types': 'PropTypes',
-		'@fluentui/react': 'FluentUIReact'
+		'react': {
+			root: 'React',
+			commonjs2: 'react',
+			commonjs: 'react',
+			amd: 'react',
+		},
+		'prop-types': {
+			root: 'PropTypes',
+			commonjs: 'prop-types',
+			commonjs2: 'prop-types',
+			amd: 'prop-types',
+		},
+		'@fluentui/react': {
+			root: 'FluentUIReact',
+			commonjs: '@fluentui/react',
+			commonjs2: '@fluentui/react',
+			amd: '@fluentui/react'
+		}
 	},
 
 	module: {
 		rules: [{
+			test: /\.js$/,
+			exclude: /(node_modules|bower_components)/,
+			use: {
+				loader: 'babel-loader',
+				options: {
+					presets: ['@babel/preset-env'],
+					plugins: ['@babel/plugin-transform-runtime']
+				}
+			}
+		}, {
 			test: /\.jsx$/,
 			exclude: /(node_modules|bower_components)/,
 			use: {

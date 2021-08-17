@@ -32,7 +32,7 @@ export function errorMessage(message) {
 	};
 }
 
-export function warningMessag(message) {
+export function warningMessage(message) {
 	return {
 		type: LoginBoxMessageType.warning,
 		message: message
