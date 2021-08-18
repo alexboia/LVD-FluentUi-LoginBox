@@ -1,5 +1,7 @@
 # FluentUI Login Box
 
+[![NPM](https://nodei.co/npm/lvd-fluentui-loginbox.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/lvd-fluentui-loginbox/)
+
 A ReactJS login box built using the [FluentUI library](https://github.com/microsoft/fluentui).
 It features a basic structure, with customization options for each element: 
 
