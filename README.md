@@ -120,6 +120,9 @@ npm run build
 
 | What | Prop Name | Type | Notes |
 | --- | --- | --- | --- |
+| Disable component | `underlined` | `boolean` | Cascades to all fields and buttons. Defaults to `false`. |
+| Make component readonly | `readOnly` | `boolean` | Cascades to all fields. Defaults to `false`. |
+| Display fields in underlined style. | `underlined` | `boolean` | Defaults to `false`. |
 | Component Title | `titleProps` | `Title Customization Object` | See below. |
 | Message | `messageProps` | `Message Object` | See below. By default no message is shown. |
 | Username field | `userNameProps` | `Username Customization Object` | See below. |
@@ -279,10 +282,11 @@ The login values are exported as a plain javascript object with the following pr
 
 | Event | Prop Name | Arguments | Notes |
 | --- | --- | --- | --- |
-| Values changed | `onLoginValuesChanged` | `Login Values Object` | Triggered whenever either of the user name or password field changes |
-| Login requested | `onLoginRequested` | `Login Values Object` | Triggered when the `Log-in` button is clicked |
-| Password recovery requested | `onForgotPasswordRequested` | `Login Values Object` | Triggered when the `Forgot password` button is clicked |
-| Component disposed | `onLoginFormDisposed` | `Login Values Object` | Triggered when the component is un-mounted by `React` |
+| Values changed | `onLoginValuesChanged` | (`oldValues`:`Login Values Object`, `newValues`:`Login Values Object`) | Triggered whenever either of the user name or password field changes |
+| Login requested | `onLoginRequested` | (`Login Values Object`) | Triggered when the `Log-in` button is clicked |
+| Password recovery requested | `onForgotPasswordRequested` | (`Login Values Object`) | Triggered when the `Forgot password` button is clicked |
+| Component initialized | `onLoginFormInitialized` | `none` | Triggered when the component is mounted by `React` |
+| Component disposed | `onLoginFormDisposed` | (`Login Values Object`) | Triggered when the component is un-mounted by `React` |
 
 ## Donate
 <a name="lb-donate"></a>

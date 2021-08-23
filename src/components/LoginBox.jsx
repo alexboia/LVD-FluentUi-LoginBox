@@ -51,6 +51,7 @@ export default class LoginBox extends React.Component {
 	}
 
 	_handleUserNameChanged(event) {
+		event.preventDefault();
 		const oldValues = this._getFormValues();
 		this.setState({
 			userName: event.target.value,
@@ -59,6 +60,7 @@ export default class LoginBox extends React.Component {
 	}
 
 	_handlePasswordChanged(event) {
+		event.preventDefault();
 		const oldValues = this._getFormValues();
 		this.setState({
 			password: event.target.value,
@@ -86,6 +88,12 @@ export default class LoginBox extends React.Component {
 		const values = this._getFormValues();
 		if (this.props.onForgotPasswordRequested != null) {
 			this.props.onForgotPasswordRequested(values);
+		}
+	}
+
+	componentDidMount() {
+		if (this.props.onLoginFormInitialized != null) {
+			this.props.onLoginFormInitialized();
 		}
 	}
 
@@ -159,20 +167,31 @@ export default class LoginBox extends React.Component {
 
 	_renderUserNameField() {
 		const userNameProps = this._getUserNameProps();
-		
+		const underlined = this._areFieldsUnderlined();
+
 		const userNameElement = (
 			<TextField label={userNameProps.label}
 				required={true}
+				underlined={underlined}
 				value={this.state.userName}
 				placeholder={userNameProps.placeholder} 
 				onChange={this._handleUserNameChanged}
 				onGetErrorMessage={this._getUserNameFieldErrorMessage}
 				disabled={this._isDisabled()}
+				readOnly={this._areAllFieldsReadonly()}
 				className="lvd-login-box-element lvd-login-box-username"
 			/>
 		);
 
 		return this._renderField(userNameElement);
+	}
+
+	_areFieldsUnderlined() {
+		return !!this.props.underlined;
+	}
+
+	_areAllFieldsReadonly() {
+		return !!this.props.readOnly;
 	}
 
 	_getUserNameProps() {
@@ -190,9 +209,22 @@ export default class LoginBox extends React.Component {
 
 	_getUserNameFieldErrorMessage(value) {
 		const userNameProps = this._getUserNameProps();
-		return (value != null && value.length > 0) || !this.state.hasInteracted
-			? ''
-			: userNameProps.emptyErrorMessage;
+		return this._displayUserNameErrorMessages(value)
+			? userNameProps.emptyErrorMessage
+			: '';
+	}
+
+	_displayUserNameErrorMessages(value) {
+		return !this._isUserNameFilledIn(value)
+			&& this._displayFieldErrorMessages();
+	}
+
+	_isUserNameFilledIn(value) {
+		return (value != null && value.length > 0);
+	}
+
+	_displayFieldErrorMessages() {
+		return !!this.state.hasInteracted;
 	}
 
 	_renderField(element) {
@@ -203,17 +235,20 @@ export default class LoginBox extends React.Component {
 
 	_renderPasswordField() {
 		const passwordProps = this._getPasswordProps();
+		const underlined = this._areFieldsUnderlined();
 
 		const passwordElement = (
 			<TextField label={passwordProps.label}
 				type="password"
 				required={true}
+				underlined={underlined}
 				value={this.state.password}
 				placeholder={passwordProps.placeholder} 
 				onChange={this._handlePasswordChanged}
 				onGetErrorMessage={this._getPasswordFieldErrorMessage}
 				canRevealPassword={passwordProps.canReveal}
 				disabled={this._isDisabled()}
+				readOnly={this._areAllFieldsReadonly()}
 				className="lvd-login-box-element lvd-login-box-password"
 			/>
 		);
@@ -239,9 +274,18 @@ export default class LoginBox extends React.Component {
 
 	_getPasswordFieldErrorMessage(value) {
 		const passwordProps = this._getPasswordProps();
-		return (value != null && value.length > 0) || !this.state.hasInteracted
-			? ''
-			: passwordProps.emptyErrorMessage;
+		return this._displayPasswordErrorMessages(value)
+			? passwordProps.emptyErrorMessage
+			: '';
+	}
+
+	_displayPasswordErrorMessages(value) {
+		return !this._isPasswordFilledIn(value) 
+			&& this._displayFieldErrorMessages();
+	}
+
+	_isPasswordFilledIn(value) {
+		return (value != null && value.length > 0);
 	}
 
 	_renderLoginActionButton() {
@@ -292,6 +336,8 @@ export default class LoginBox extends React.Component {
 
 LoginBox.propTypes = {
 	disabled: PropTypes.bool,
+	underlined: PropTypes.bool,
+	readOnly: PropTypes.bool,
 
 	titleProps: PropTypes.object,
 	userNameProps: PropTypes.object,
@@ -300,6 +346,7 @@ LoginBox.propTypes = {
 	passwordRecoveryActionButtonProps: PropTypes.object,
 	messageProps: PropTypes.object,
 
+	onLoginFormInitialized: PropTypes.func,
 	onLoginFormDisposed: PropTypes.func,
 	onLoginRequested: PropTypes.func,
 	onForgotPasswordRequested: PropTypes.func,

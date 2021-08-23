@@ -28,3 +28,7 @@
 	margin-bottom: 5px;
 }
 
+.lvd-login-box-field .ms-TextField--underlined .ms-Label {
+	padding-left: 0px;
+}
+

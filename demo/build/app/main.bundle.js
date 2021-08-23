@@ -30125,6 +30125,8 @@ var App = /*#__PURE__*/function (_React$Component) {
     _this._handleLoginRequested = _this._handleLoginRequested.bind((0,_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__.default)(_this));
     _this._handleForgotPasswordRequested = _this._handleForgotPasswordRequested.bind((0,_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__.default)(_this));
     _this._handleLoginValuesChanged = _this._handleLoginValuesChanged.bind((0,_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__.default)(_this));
+    _this._handleLoginFormInitialized = _this._handleLoginFormInitialized.bind((0,_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__.default)(_this));
+    _this._handleLoginFormDisposed = _this._handleLoginFormDisposed.bind((0,_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__.default)(_this));
     return _this;
   }
 
@@ -30239,14 +30241,25 @@ var App = /*#__PURE__*/function (_React$Component) {
       return Math.max(Math.random() * 1000, 250);
     }
   }, {
+    key: "_handleLoginFormInitialized",
+    value: function _handleLoginFormInitialized() {
+      this._log('Login form initialized.');
+    }
+  }, {
+    key: "_handleLoginFormDisposed",
+    value: function _handleLoginFormDisposed(values) {
+      this._log('Login form disposed.');
+
+      this._log(values);
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6__.createElement(_components_LoginBox_jsx__WEBPACK_IMPORTED_MODULE_7__.default, {
         disabled: this.state.working,
-        onLoginRequested: this._handleLoginRequested,
-        onForgotPasswordRequested: this._handleForgotPasswordRequested,
-        onLoginValuesChanged: this._handleLoginValuesChanged,
         messageProps: this.state.loginMessage,
+        readOnly: true,
+        underlined: true,
         titleProps: {
           show: false
         },
@@ -30267,7 +30280,12 @@ var App = /*#__PURE__*/function (_React$Component) {
         passwordRecoveryActionButtonProps: {
           label: "I forgot my password!",
           show: true
-        }
+        },
+        onLoginRequested: this._handleLoginRequested,
+        onForgotPasswordRequested: this._handleForgotPasswordRequested,
+        onLoginValuesChanged: this._handleLoginValuesChanged,
+        onLoginFormInitialized: this._handleLoginFormInitialized,
+        onLoginFormDisposed: this._handleLoginFormDisposed
       });
     }
   }]);
@@ -30367,6 +30385,8 @@ var LoginBox = /*#__PURE__*/function (_React$Component) {
     value: function _handleUserNameChanged(event) {
       var _this2 = this;
 
+      event.preventDefault();
+
       var oldValues = this._getFormValues();
 
       this.setState({
@@ -30380,6 +30400,8 @@ var LoginBox = /*#__PURE__*/function (_React$Component) {
     key: "_handlePasswordChanged",
     value: function _handlePasswordChanged(event) {
       var _this3 = this;
+
+      event.preventDefault();
 
       var oldValues = this._getFormValues();
 
@@ -30419,6 +30441,13 @@ var LoginBox = /*#__PURE__*/function (_React$Component) {
 
       if (this.props.onForgotPasswordRequested != null) {
         this.props.onForgotPasswordRequested(values);
+      }
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (this.props.onLoginFormInitialized != null) {
+        this.props.onLoginFormInitialized();
       }
     }
   }, {
@@ -30485,17 +30514,31 @@ var LoginBox = /*#__PURE__*/function (_React$Component) {
     value: function _renderUserNameField() {
       var userNameProps = this._getUserNameProps();
 
+      var underlined = this._areFieldsUnderlined();
+
       var userNameElement = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_11__.TextField, {
         label: userNameProps.label,
         required: true,
+        underlined: underlined,
         value: this.state.userName,
         placeholder: userNameProps.placeholder,
         onChange: this._handleUserNameChanged,
         onGetErrorMessage: this._getUserNameFieldErrorMessage,
         disabled: this._isDisabled(),
+        readOnly: this._areAllFieldsReadonly(),
         className: "lvd-login-box-element lvd-login-box-username"
       });
       return this._renderField(userNameElement);
+    }
+  }, {
+    key: "_areFieldsUnderlined",
+    value: function _areFieldsUnderlined() {
+      return !!this.props.underlined;
+    }
+  }, {
+    key: "_areAllFieldsReadonly",
+    value: function _areAllFieldsReadonly() {
+      return !!this.props.readOnly;
     }
   }, {
     key: "_getUserNameProps",
@@ -30512,7 +30555,22 @@ var LoginBox = /*#__PURE__*/function (_React$Component) {
     value: function _getUserNameFieldErrorMessage(value) {
       var userNameProps = this._getUserNameProps();
 
-      return value != null && value.length > 0 || !this.state.hasInteracted ? '' : userNameProps.emptyErrorMessage;
+      return this._displayUserNameErrorMessages(value) ? userNameProps.emptyErrorMessage : '';
+    }
+  }, {
+    key: "_displayUserNameErrorMessages",
+    value: function _displayUserNameErrorMessages(value) {
+      return !this._isUserNameFilledIn(value) && this._displayFieldErrorMessages();
+    }
+  }, {
+    key: "_isUserNameFilledIn",
+    value: function _isUserNameFilledIn(value) {
+      return value != null && value.length > 0;
+    }
+  }, {
+    key: "_displayFieldErrorMessages",
+    value: function _displayFieldErrorMessages() {
+      return !!this.state.hasInteracted;
     }
   }, {
     key: "_renderField",
@@ -30526,16 +30584,20 @@ var LoginBox = /*#__PURE__*/function (_React$Component) {
     value: function _renderPasswordField() {
       var passwordProps = this._getPasswordProps();
 
+      var underlined = this._areFieldsUnderlined();
+
       var passwordElement = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_11__.TextField, {
         label: passwordProps.label,
         type: "password",
         required: true,
+        underlined: underlined,
         value: this.state.password,
         placeholder: passwordProps.placeholder,
         onChange: this._handlePasswordChanged,
         onGetErrorMessage: this._getPasswordFieldErrorMessage,
         canRevealPassword: passwordProps.canReveal,
         disabled: this._isDisabled(),
+        readOnly: this._areAllFieldsReadonly(),
         className: "lvd-login-box-element lvd-login-box-password"
       });
       return this._renderField(passwordElement);
@@ -30556,7 +30618,17 @@ var LoginBox = /*#__PURE__*/function (_React$Component) {
     value: function _getPasswordFieldErrorMessage(value) {
       var passwordProps = this._getPasswordProps();
 
-      return value != null && value.length > 0 || !this.state.hasInteracted ? '' : passwordProps.emptyErrorMessage;
+      return this._displayPasswordErrorMessages(value) ? passwordProps.emptyErrorMessage : '';
+    }
+  }, {
+    key: "_displayPasswordErrorMessages",
+    value: function _displayPasswordErrorMessages(value) {
+      return !this._isPasswordFilledIn(value) && this._displayFieldErrorMessages();
+    }
+  }, {
+    key: "_isPasswordFilledIn",
+    value: function _isPasswordFilledIn(value) {
+      return value != null && value.length > 0;
     }
   }, {
     key: "_renderLoginActionButton",
@@ -30610,12 +30682,15 @@ var LoginBox = /*#__PURE__*/function (_React$Component) {
 
 LoginBox.propTypes = {
   disabled: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().bool),
+  underlined: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().bool),
+  readOnly: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().bool),
   titleProps: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().object),
   userNameProps: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().object),
   passwordProps: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().object),
   loginActionButtonProps: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().object),
   passwordRecoveryActionButtonProps: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().object),
   messageProps: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().object),
+  onLoginFormInitialized: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().func),
   onLoginFormDisposed: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().func),
   onLoginRequested: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().func),
   onForgotPasswordRequested: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().func),

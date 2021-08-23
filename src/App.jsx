@@ -24,6 +24,11 @@ export default class App extends React.Component {
 			this._handleForgotPasswordRequested.bind(this);
 		this._handleLoginValuesChanged = 
 			this._handleLoginValuesChanged.bind(this);
+
+		this._handleLoginFormInitialized = 
+			this._handleLoginFormInitialized.bind(this);
+		this._handleLoginFormDisposed = 
+			this._handleLoginFormDisposed.bind(this);
 	}
 
 	_setBusy(isBusy) {
@@ -111,14 +116,22 @@ export default class App extends React.Component {
 		return Math.max(Math.random() * 1000, 250);
 	}
 
+	_handleLoginFormInitialized() {
+		this._log('Login form initialized.');
+	}
+
+	_handleLoginFormDisposed(values) {
+		this._log('Login form disposed.');
+		this._log(values);
+	}
+
 	render() {
 		return (
 			<LoginBox 
 				disabled={this.state.working}
-				onLoginRequested={this._handleLoginRequested}
-				onForgotPasswordRequested={this._handleForgotPasswordRequested}
-				onLoginValuesChanged={this._handleLoginValuesChanged}
 				messageProps={this.state.loginMessage}
+				readOnly={true}
+				underlined={true}
 
 				titleProps={{
 					show: false
@@ -145,6 +158,12 @@ export default class App extends React.Component {
 					label: "I forgot my password!",
 					show: true
 				}}
+
+				onLoginRequested={this._handleLoginRequested}
+				onForgotPasswordRequested={this._handleForgotPasswordRequested}
+				onLoginValuesChanged={this._handleLoginValuesChanged}
+				onLoginFormInitialized={this._handleLoginFormInitialized}
+				onLoginFormDisposed={this._handleLoginFormDisposed}
 			/>
 		);
 	}
