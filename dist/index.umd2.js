@@ -7,7 +7,7 @@
 		exports["LoginBox"] = factory(require("@fluentui/react"), require("prop-types"), require("react"));
 	else
 		root["LoginBox"] = factory(root["FluentUIReact"], root["PropTypes"], root["React"]);
-})(self, function(__WEBPACK_EXTERNAL_MODULE__5__, __WEBPACK_EXTERNAL_MODULE__16__, __WEBPACK_EXTERNAL_MODULE__15__) {
+})(self, function(__WEBPACK_EXTERNAL_MODULE__3__, __WEBPACK_EXTERNAL_MODULE__17__, __WEBPACK_EXTERNAL_MODULE__16__) {
 return /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ([
@@ -20,18 +20,41 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_fluentui_react__WEBPACK_IMPORTED_MODULE_0__);
+
 var LoginBoxMessageType = {
-  info: 0,
-  error: 1,
-  blocked: 2,
-  severeWarning: 3,
-  success: 4,
-  warning: 5
+  info: _fluentui_react__WEBPACK_IMPORTED_MODULE_0__.MessageBarType.info,
+  error: _fluentui_react__WEBPACK_IMPORTED_MODULE_0__.MessageBarType.error,
+  blocked: _fluentui_react__WEBPACK_IMPORTED_MODULE_0__.MessageBarType.blocked,
+  severeWarning: _fluentui_react__WEBPACK_IMPORTED_MODULE_0__.MessageBarType.severeWarning,
+  success: _fluentui_react__WEBPACK_IMPORTED_MODULE_0__.MessageBarType.success,
+  warning: _fluentui_react__WEBPACK_IMPORTED_MODULE_0__.MessageBarType.warning
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LoginBoxMessageType);
 
 /***/ }),
 /* 3 */
+/***/ ((module) => {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE__3__;
+
+/***/ }),
+/* 4 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var PasswordRecoveryButtonPositions = {
+  left: 'left',
+  right: 'right'
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PasswordRecoveryButtonPositions);
+
+/***/ }),
+/* 5 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -42,8 +65,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "warningMessage": () => (/* binding */ warningMessage),
 /* harmony export */   "infoMessage": () => (/* binding */ infoMessage)
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(5);
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
 /* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_fluentui_react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _LoginBoxMessageType_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(2);
 
@@ -88,7 +111,7 @@ function infoMessage(message) {
 }
 
 /***/ }),
-/* 4 */
+/* 6 */
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -111,33 +134,28 @@ function _defineProperty(obj, key, value) {
 }
 
 /***/ }),
-/* 5 */
-/***/ ((module) => {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE__5__;
-
-/***/ }),
-/* 6 */
+/* 7 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ LoginBox)
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7);
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(8);
-/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(9);
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(10);
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(12);
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(14);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(15);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(10);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(11);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(13);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(15);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(16);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(16);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(17);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(5);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(3);
 /* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_fluentui_react__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _LoginBoxDefaults_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(17);
-/* harmony import */ var _LoginBoxUtility_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(3);
+/* harmony import */ var _LoginBoxDefaults_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(18);
+/* harmony import */ var _LoginBoxUtility_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(5);
+/* harmony import */ var _PasswordRecoveryButtonPositions_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(4);
 
 
 
@@ -148,6 +166,7 @@ __webpack_require__.r(__webpack_exports__);
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__.default)(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__.default)(this, result); }; }
 
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
 
 
 
@@ -502,7 +521,7 @@ var LoginBox = /*#__PURE__*/function (_React$Component) {
 
       return passwordRecoveryActionButtonProps.show && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default().createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_8__.DefaultButton, {
         primary: false,
-        className: "lvd-login-box-btn lvd-login-box-forgot-passwd-btn",
+        className: this._computePasswordRecoveryActionButtonCssClassName(passwordRecoveryActionButtonProps),
         text: passwordRecoveryActionButtonProps.label,
         onClick: this._handleForgotPasswordButtonClicked,
         disabled: this._isDisabled()
@@ -514,8 +533,21 @@ var LoginBox = /*#__PURE__*/function (_React$Component) {
       var passwordRecoveryActionButtonProps = this.props.passwordRecoveryActionButtonProps || {};
       return {
         show: passwordRecoveryActionButtonProps.hasOwnProperty('show') ? !!passwordRecoveryActionButtonProps.show : true,
-        label: passwordRecoveryActionButtonProps.label || _LoginBoxDefaults_js__WEBPACK_IMPORTED_MODULE_9__.default.passwordReoveryActionButton.label
+        label: passwordRecoveryActionButtonProps.label || _LoginBoxDefaults_js__WEBPACK_IMPORTED_MODULE_9__.default.passwordReoveryActionButton.label,
+        position: passwordRecoveryActionButtonProps.position || _LoginBoxDefaults_js__WEBPACK_IMPORTED_MODULE_9__.default.passwordReoveryActionButton.position
       };
+    }
+  }, {
+    key: "_computePasswordRecoveryActionButtonCssClassName",
+    value: function _computePasswordRecoveryActionButtonCssClassName(passwordRecoveryActionButtonProps) {
+      var positionClassName = 'lvd-login-box-forgot-passwd-btn-left';
+      var baseClassName = 'lvd-login-box-btn lvd-login-box-forgot-passwd-btn';
+
+      if (passwordRecoveryActionButtonProps.position == _PasswordRecoveryButtonPositions_js__WEBPACK_IMPORTED_MODULE_11__.default.right) {
+        positionClassName = 'lvd-login-box-forgot-passwd-btn-right';
+      }
+
+      return "".concat(baseClassName, " ").concat(positionClassName);
     }
   }]);
 
@@ -542,7 +574,7 @@ LoginBox.propTypes = {
 };
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -556,7 +588,7 @@ function _classCallCheck(instance, Constructor) {
 }
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -580,7 +612,7 @@ function _createClass(Constructor, protoProps, staticProps) {
 }
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -596,14 +628,14 @@ function _assertThisInitialized(self) {
 }
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ _inherits)
 /* harmony export */ });
-/* harmony import */ var _setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(11);
+/* harmony import */ var _setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(12);
 
 function _inherits(subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
@@ -621,7 +653,7 @@ function _inherits(subClass, superClass) {
 }
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -638,15 +670,15 @@ function _setPrototypeOf(o, p) {
 }
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ _possibleConstructorReturn)
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(13);
-/* harmony import */ var _assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
+/* harmony import */ var _babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(14);
+/* harmony import */ var _assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10);
 
 
 function _possibleConstructorReturn(self, call) {
@@ -660,7 +692,7 @@ function _possibleConstructorReturn(self, call) {
 }
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -684,7 +716,7 @@ function _typeof(obj) {
 }
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -699,12 +731,6 @@ function _getPrototypeOf(o) {
 }
 
 /***/ }),
-/* 15 */
-/***/ ((module) => {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE__15__;
-
-/***/ }),
 /* 16 */
 /***/ ((module) => {
 
@@ -712,12 +738,20 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__16__;
 
 /***/ }),
 /* 17 */
+/***/ ((module) => {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE__17__;
+
+/***/ }),
+/* 18 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _PasswordRecoveryButtonPositions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
+
 var LoginBoxDefaults = {
   title: 'Log-in',
   userName: {
@@ -738,7 +772,8 @@ var LoginBoxDefaults = {
     label: 'Log-in'
   },
   passwordReoveryActionButton: {
-    label: 'Forgot password?'
+    label: 'Forgot password?',
+    position: _PasswordRecoveryButtonPositions__WEBPACK_IMPORTED_MODULE_0__.default.left
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LoginBoxDefaults);
@@ -817,16 +852,19 @@ var __webpack_exports__ = {};
 (() => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "successMessage": () => (/* reexport safe */ _LoginBoxUtility_js__WEBPACK_IMPORTED_MODULE_1__.successMessage),
-/* harmony export */   "errorMessage": () => (/* reexport safe */ _LoginBoxUtility_js__WEBPACK_IMPORTED_MODULE_1__.errorMessage),
-/* harmony export */   "warningMessage": () => (/* reexport safe */ _LoginBoxUtility_js__WEBPACK_IMPORTED_MODULE_1__.warningMessage),
-/* harmony export */   "infoMessage": () => (/* reexport safe */ _LoginBoxUtility_js__WEBPACK_IMPORTED_MODULE_1__.infoMessage),
+/* harmony export */   "successMessage": () => (/* reexport safe */ _LoginBoxUtility_js__WEBPACK_IMPORTED_MODULE_2__.successMessage),
+/* harmony export */   "errorMessage": () => (/* reexport safe */ _LoginBoxUtility_js__WEBPACK_IMPORTED_MODULE_2__.errorMessage),
+/* harmony export */   "warningMessage": () => (/* reexport safe */ _LoginBoxUtility_js__WEBPACK_IMPORTED_MODULE_2__.warningMessage),
+/* harmony export */   "infoMessage": () => (/* reexport safe */ _LoginBoxUtility_js__WEBPACK_IMPORTED_MODULE_2__.infoMessage),
+/* harmony export */   "PasswordRecoveryButtonPositions": () => (/* reexport safe */ _PasswordRecoveryButtonPositions_js__WEBPACK_IMPORTED_MODULE_1__.default),
 /* harmony export */   "LoginBoxMessageType": () => (/* reexport safe */ _LoginBoxMessageType_js__WEBPACK_IMPORTED_MODULE_0__.default),
-/* harmony export */   "LoginBox": () => (/* reexport safe */ _LoginBox_jsx__WEBPACK_IMPORTED_MODULE_2__.default)
+/* harmony export */   "LoginBox": () => (/* reexport safe */ _LoginBox_jsx__WEBPACK_IMPORTED_MODULE_3__.default)
 /* harmony export */ });
 /* harmony import */ var _LoginBoxMessageType_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
-/* harmony import */ var _LoginBoxUtility_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
-/* harmony import */ var _LoginBox_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6);
+/* harmony import */ var _PasswordRecoveryButtonPositions_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
+/* harmony import */ var _LoginBoxUtility_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5);
+/* harmony import */ var _LoginBox_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(7);
+
 
 
 

@@ -2,6 +2,8 @@ import React from 'react';
 import LoginBox from './components/LoginBox.jsx';
 import { successMessage, errorMessage } from './components/LoginBoxUtility.js';
 
+import PasswordRecoveryButtonPositions from './components/PasswordRecoveryButtonPositions.js'
+
 const testData = {
 	correctCredentials: {
 		userName: 'test',
@@ -156,6 +158,7 @@ export default class App extends React.Component {
 
 				passwordRecoveryActionButtonProps={{
 					label: "I forgot my password!",
+					position: PasswordRecoveryButtonPositions.right,
 					show: true
 				}}
 

@@ -7,6 +7,7 @@ import { MessageBar } from '@fluentui/react';
 
 import LoginBoxDefaults from './LoginBoxDefaults.js';
 import { loginBoxMessageTypeToOfficeUiMessageType } from './LoginBoxUtility.js';
+import PasswordRecoveryButtonPositions from './PasswordRecoveryButtonPositions.js';
 
 export default class LoginBox extends React.Component {
 	constructor(props) {
@@ -333,7 +334,7 @@ export default class LoginBox extends React.Component {
 		const passwordRecoveryActionButtonProps = this._getPasswordRecoveryActionButtonProps();
 		return passwordRecoveryActionButtonProps.show && (
 			<DefaultButton primary={false}
-				className="lvd-login-box-btn lvd-login-box-forgot-passwd-btn"
+				className={this._computePasswordRecoveryActionButtonCssClassName(passwordRecoveryActionButtonProps)}
 				text={passwordRecoveryActionButtonProps.label} 
 				onClick={this._handleForgotPasswordButtonClicked}
 				disabled={this._isDisabled()}
@@ -348,8 +349,21 @@ export default class LoginBox extends React.Component {
 				? !!passwordRecoveryActionButtonProps.show
 				: true,
 			label: passwordRecoveryActionButtonProps.label 
-				|| LoginBoxDefaults.passwordReoveryActionButton.label
+				|| LoginBoxDefaults.passwordReoveryActionButton.label,
+			position: passwordRecoveryActionButtonProps.position
+				|| LoginBoxDefaults.passwordReoveryActionButton.position
 		};
+	}
+
+	_computePasswordRecoveryActionButtonCssClassName(passwordRecoveryActionButtonProps) {
+		let positionClassName = 'lvd-login-box-forgot-passwd-btn-left';
+		const baseClassName = 'lvd-login-box-btn lvd-login-box-forgot-passwd-btn';
+		
+		if (passwordRecoveryActionButtonProps.position == PasswordRecoveryButtonPositions.right) { 
+			positionClassName = 'lvd-login-box-forgot-passwd-btn-right';
+		}
+
+		return `${baseClassName} ${positionClassName}`;
 	}
 }
 

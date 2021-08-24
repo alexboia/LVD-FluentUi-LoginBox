@@ -1,3 +1,5 @@
+import PasswordRecoveryButtonPositions from "./PasswordRecoveryButtonPositions";
+
 const LoginBoxDefaults = {
 	title: 'Log-in',
 	userName: {
@@ -18,7 +20,8 @@ const LoginBoxDefaults = {
 		label: 'Log-in'
 	},
 	passwordReoveryActionButton: {
-		label: 'Forgot password?'
+		label: 'Forgot password?',
+		position: PasswordRecoveryButtonPositions.left
 	}
 };
 

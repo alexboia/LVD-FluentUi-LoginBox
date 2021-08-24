@@ -1,4 +1,5 @@
 import LoginBoxMessageType from './LoginBoxMessageType.js';
+import PasswordRecoveryButtonPositions from './PasswordRecoveryButtonPositions.js';
 
 import { 
 	successMessage,
@@ -14,6 +15,8 @@ export {
 	errorMessage,
 	warningMessage,
 	infoMessage,
+
+	PasswordRecoveryButtonPositions,
 
 	LoginBoxMessageType,
 	LoginBox
