@@ -30260,6 +30260,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         messageProps: this.state.loginMessage,
         readOnly: true,
         underlined: true,
+        framed: false,
         titleProps: {
           show: false
         },
@@ -30463,12 +30464,30 @@ var LoginBox = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6__.createElement("div", {
-        className: "lvd-login-box"
+        className: this._computeContainerCssClassName()
       }, this._renderTitle(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6__.createElement("div", {
         className: "lvd-login-box-fields-container"
       }, this._renderMessage(), this._renderUserNameField(), this._renderPasswordField()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6__.createElement("div", {
         className: "lvd-login-box-button-container"
-      }, this._renderLoginActionButton(), this._renderPasswordRecoveryActionButton()));
+      }, this._renderLoginActionButton(), this._renderPasswordRecoveryActionButton(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6__.createElement("div", {
+        className: "lvd-login-box-clear"
+      })));
+    }
+  }, {
+    key: "_computeContainerCssClassName",
+    value: function _computeContainerCssClassName() {
+      var className = 'lvd-login-box';
+
+      if (this._useFramedLayout()) {
+        className = "".concat(className, " lvd-login-box-framed");
+      }
+
+      return className;
+    }
+  }, {
+    key: "_useFramedLayout",
+    value: function _useFramedLayout() {
+      return this.props.hasOwnProperty('framed') ? !!this.props.framed : true;
     }
   }, {
     key: "_renderTitle",
@@ -30555,16 +30574,21 @@ var LoginBox = /*#__PURE__*/function (_React$Component) {
     value: function _getUserNameFieldErrorMessage(value) {
       var userNameProps = this._getUserNameProps();
 
-      return this._displayUserNameErrorMessages(value) ? userNameProps.emptyErrorMessage : '';
+      return this._displayUserNameEmptyErrorMessage(value) ? userNameProps.emptyErrorMessage : '';
     }
   }, {
-    key: "_displayUserNameErrorMessages",
-    value: function _displayUserNameErrorMessages(value) {
+    key: "_displayUserNameEmptyErrorMessage",
+    value: function _displayUserNameEmptyErrorMessage(value) {
       return !this._isUserNameFilledIn(value) && this._displayFieldErrorMessages();
     }
   }, {
     key: "_isUserNameFilledIn",
     value: function _isUserNameFilledIn(value) {
+      return this._isValueFilledIn(value);
+    }
+  }, {
+    key: "_isValueFilledIn",
+    value: function _isValueFilledIn(value) {
       return value != null && value.length > 0;
     }
   }, {
@@ -30618,17 +30642,17 @@ var LoginBox = /*#__PURE__*/function (_React$Component) {
     value: function _getPasswordFieldErrorMessage(value) {
       var passwordProps = this._getPasswordProps();
 
-      return this._displayPasswordErrorMessages(value) ? passwordProps.emptyErrorMessage : '';
+      return this._displayPasswordEmptyErrorMessage(value) ? passwordProps.emptyErrorMessage : '';
     }
   }, {
-    key: "_displayPasswordErrorMessages",
-    value: function _displayPasswordErrorMessages(value) {
+    key: "_displayPasswordEmptyErrorMessage",
+    value: function _displayPasswordEmptyErrorMessage(value) {
       return !this._isPasswordFilledIn(value) && this._displayFieldErrorMessages();
     }
   }, {
     key: "_isPasswordFilledIn",
     value: function _isPasswordFilledIn(value) {
-      return value != null && value.length > 0;
+      return this._isValueFilledIn(value);
     }
   }, {
     key: "_renderLoginActionButton",
@@ -30684,6 +30708,7 @@ LoginBox.propTypes = {
   disabled: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().bool),
   underlined: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().bool),
   readOnly: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().bool),
+  framed: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().bool),
   titleProps: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().object),
   userNameProps: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().object),
   passwordProps: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().object),

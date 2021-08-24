@@ -106,7 +106,7 @@ export default class LoginBox extends React.Component {
 
 	render() {
 		return (
-			<div className="lvd-login-box">
+			<div className={this._computeContainerCssClassName()}>
 				{this._renderTitle()}
 
 				<div className="lvd-login-box-fields-container">
@@ -118,9 +118,24 @@ export default class LoginBox extends React.Component {
 				<div className="lvd-login-box-button-container">
 					{this._renderLoginActionButton()}
 					{this._renderPasswordRecoveryActionButton()}
+					<div className="lvd-login-box-clear"></div>
 				</div>
 			</div>
 		);
+	}
+
+	_computeContainerCssClassName() {
+		let className = 'lvd-login-box';
+		if (this._useFramedLayout()) {
+			className = `${className} lvd-login-box-framed`;
+		}
+		return className;
+	}
+
+	_useFramedLayout() {
+		return this.props.hasOwnProperty('framed')
+			? !!this.props.framed
+			: true;
 	}
 
 	_renderTitle() {
@@ -209,17 +224,21 @@ export default class LoginBox extends React.Component {
 
 	_getUserNameFieldErrorMessage(value) {
 		const userNameProps = this._getUserNameProps();
-		return this._displayUserNameErrorMessages(value)
+		return this._displayUserNameEmptyErrorMessage(value)
 			? userNameProps.emptyErrorMessage
 			: '';
 	}
 
-	_displayUserNameErrorMessages(value) {
+	_displayUserNameEmptyErrorMessage(value) {
 		return !this._isUserNameFilledIn(value)
 			&& this._displayFieldErrorMessages();
 	}
 
 	_isUserNameFilledIn(value) {
+		return this._isValueFilledIn(value);
+	}
+
+	_isValueFilledIn(value) {
 		return (value != null && value.length > 0);
 	}
 
@@ -274,18 +293,18 @@ export default class LoginBox extends React.Component {
 
 	_getPasswordFieldErrorMessage(value) {
 		const passwordProps = this._getPasswordProps();
-		return this._displayPasswordErrorMessages(value)
+		return this._displayPasswordEmptyErrorMessage(value)
 			? passwordProps.emptyErrorMessage
 			: '';
 	}
 
-	_displayPasswordErrorMessages(value) {
+	_displayPasswordEmptyErrorMessage(value) {
 		return !this._isPasswordFilledIn(value) 
 			&& this._displayFieldErrorMessages();
 	}
 
 	_isPasswordFilledIn(value) {
-		return (value != null && value.length > 0);
+		return this._isValueFilledIn(value);
 	}
 
 	_renderLoginActionButton() {
@@ -338,6 +357,7 @@ LoginBox.propTypes = {
 	disabled: PropTypes.bool,
 	underlined: PropTypes.bool,
 	readOnly: PropTypes.bool,
+	framed: PropTypes.bool,
 
 	titleProps: PropTypes.object,
 	userNameProps: PropTypes.object,
