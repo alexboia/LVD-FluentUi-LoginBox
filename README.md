@@ -27,7 +27,8 @@ Here's a screenshot of how it all looks like [using the default styling](https:/
 5. [Building](#lb-building)
 6. [Customization Options](#lb-customization)
 7. [Events](#lb-events)
-8. [Donate](#lb-donate)
+8. [Changelog](#lb-changelog)
+9. [Donate](#lb-donate)
 
 ## Installation
 <a name="lb-installation"></a>
