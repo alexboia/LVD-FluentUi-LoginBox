@@ -107,7 +107,7 @@ export default class LoginBox extends React.Component {
 
 	render() {
 		return (
-			<div className={this._computeContainerCssClassName()}>
+			<div className={this._computeContainerCssClassName()} style={this._getStyle()}>
 				{this._renderTitle()}
 
 				<div className="lvd-login-box-fields-container">
@@ -126,17 +126,52 @@ export default class LoginBox extends React.Component {
 	}
 
 	_computeContainerCssClassName() {
-		let className = 'lvd-login-box';
+		const containerClassName = ['lvd-login-box'];
+		
 		if (this._useFramedLayout()) {
-			className = `${className} lvd-login-box-framed`;
+			containerClassName.push('lvd-login-box-framed');
 		}
-		return className;
+
+		if (this._useFixedLayout()) {
+			containerClassName.push('lvd-login-box-fixed');
+		}
+
+		if (this._useCenteredLayout()) {
+			containerClassName.push('lvd-login-box-centered');
+		}
+
+		const className = this._getClassName();
+		if (!!className) {
+			containerClassName.push(className);
+		}
+
+		return containerClassName.join(' ');
+	}
+
+	_getClassName() {
+		return this.props.className || null;
 	}
 
 	_useFramedLayout() {
 		return this.props.hasOwnProperty('framed')
 			? !!this.props.framed
 			: true;
+	}
+
+	_useFixedLayout() {
+		return this.props.hasOwnProperty('fixed') 
+			? !!this.props.fixed
+			: true;
+	}
+
+	_useCenteredLayout() {
+		return this.props.hasOwnProperty('centered') 
+			? !!this.props.centered
+			: true;
+	}
+
+	_getStyle() {
+		return this.props.style || {};
 	}
 
 	_renderTitle() {
@@ -183,7 +218,7 @@ export default class LoginBox extends React.Component {
 
 	_renderUserNameField() {
 		const userNameProps = this._getUserNameProps();
-		const underlined = this._areFieldsUnderlined();
+		const underlined = this._isUnderlined();
 
 		const userNameElement = (
 			<TextField label={userNameProps.label}
@@ -191,10 +226,11 @@ export default class LoginBox extends React.Component {
 				underlined={underlined}
 				value={this.state.userName}
 				placeholder={userNameProps.placeholder} 
+				description={userNameProps.description}
 				onChange={this._handleUserNameChanged}
 				onGetErrorMessage={this._getUserNameFieldErrorMessage}
 				disabled={this._isDisabled()}
-				readOnly={this._areAllFieldsReadonly()}
+				readOnly={this._isReadOnly()}
 				className="lvd-login-box-element lvd-login-box-username"
 			/>
 		);
@@ -202,11 +238,11 @@ export default class LoginBox extends React.Component {
 		return this._renderField(userNameElement);
 	}
 
-	_areFieldsUnderlined() {
+	_isUnderlined() {
 		return !!this.props.underlined;
 	}
 
-	_areAllFieldsReadonly() {
+	_isReadOnly() {
 		return !!this.props.readOnly;
 	}
 
@@ -218,6 +254,8 @@ export default class LoginBox extends React.Component {
 			placeholder: userNameProps.hasOwnProperty('placeholder') 
 				? userNameProps.placeholder || null 
 				: LoginBoxDefaults.userName.placeholder,
+			description: userNameProps.description
+				|| LoginBoxDefaults.userName.description,
 			emptyErrorMessage: userNameProps.emptyErrorMessage 
 				|| LoginBoxDefaults.userName.messages.empty
 		};
@@ -255,7 +293,7 @@ export default class LoginBox extends React.Component {
 
 	_renderPasswordField() {
 		const passwordProps = this._getPasswordProps();
-		const underlined = this._areFieldsUnderlined();
+		const underlined = this._isUnderlined();
 
 		const passwordElement = (
 			<TextField label={passwordProps.label}
@@ -264,11 +302,12 @@ export default class LoginBox extends React.Component {
 				underlined={underlined}
 				value={this.state.password}
 				placeholder={passwordProps.placeholder} 
+				description={passwordProps.description}
 				onChange={this._handlePasswordChanged}
 				onGetErrorMessage={this._getPasswordFieldErrorMessage}
 				canRevealPassword={passwordProps.canReveal}
 				disabled={this._isDisabled()}
-				readOnly={this._areAllFieldsReadonly()}
+				readOnly={this._isReadOnly()}
 				className="lvd-login-box-element lvd-login-box-password"
 			/>
 		);
@@ -284,6 +323,8 @@ export default class LoginBox extends React.Component {
 			placeholder: passwordProps.hasOwnProperty('placeholder') 
 				? passwordProps.placeholder || null 
 				: LoginBoxDefaults.password.placeholder,
+			description: passwordProps.description
+				|| LoginBoxDefaults.password.description,
 			emptyErrorMessage: passwordProps.emptyErrorMessage 
 				|| LoginBoxDefaults.password.messages.empty,
 			canReveal: passwordProps.hasOwnProperty('canReveal')
@@ -368,10 +409,15 @@ export default class LoginBox extends React.Component {
 }
 
 LoginBox.propTypes = {
+	className: PropTypes.string,
+	style: PropTypes.object,
+
 	disabled: PropTypes.bool,
 	underlined: PropTypes.bool,
 	readOnly: PropTypes.bool,
 	framed: PropTypes.bool,
+	fixed: PropTypes.bool,
+	centered: PropTypes.bool,
 
 	titleProps: PropTypes.object,
 	userNameProps: PropTypes.object,

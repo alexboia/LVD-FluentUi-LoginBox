@@ -1,15 +1,8 @@
 import React from 'react';
 import LoginBox from './components/LoginBox.jsx';
-import { successMessage, errorMessage } from './components/LoginBoxUtility.js';
 
 import PasswordRecoveryButtonPositions from './components/PasswordRecoveryButtonPositions.js'
-
-const testData = {
-	correctCredentials: {
-		userName: 'test',
-		password: 'test'
-	}
-};
+import FakeLoginService from './FakeLoginService.js';
 
 export default class App extends React.Component {
 	constructor(props) {
@@ -33,21 +26,31 @@ export default class App extends React.Component {
 			this._handleLoginFormDisposed.bind(this);
 	}
 
+	_handleLoginRequested(values) {
+		this._log('Login requested. Values are:');
+		this._log(this._formatUserNameValues(values));
+		this._login(values);
+	}
+
+	_formatUserNameValues(values) {
+		return `Username = ${values.userName || '<empty>'}, Password = ${values.password || '<empty>'}`;
+	}
+
+	_login(values) {
+		this._setBusy(true);
+		this._clearloginMessage();
+		
+		const loginService = new FakeLoginService();
+
+		loginService.login(values, (resultMessage) => {
+			this._setBusy(false);
+			this._setLoginResult(resultMessage);
+		});
+	}
+
 	_setBusy(isBusy) {
 		this.setState({
 			working: isBusy
-		});
-	}
-
-	_setLogonFailed(message) {
-		this.setState({
-			loginMessage: errorMessage(message)
-		});
-	}
-
-	_setLogonSuccessful(message) {
-		this.setState({
-			loginMessage: successMessage(message)
 		});
 	}
 
@@ -57,18 +60,18 @@ export default class App extends React.Component {
 		});
 	}
 
-	_handleLoginRequested(values) {
-		this._log('Login requested. Values are:');
-		this._log(this._formatUserNameValues(values));
-		this._emulateLogon(values.userName, values.password);
-	}
-
-	_formatUserNameValues(values) {
-		return `Username = ${values.userName || '<empty>'}, Password = ${values.password || '<empty>'}`;
+	_setLoginResult(resultMessage) {
+		this.setState({
+			loginMessage: resultMessage
+		});
 	}
 
 	_log(text) {
-		console.log(text);
+		if (typeof text != 'object') {
+			console.log(text);
+		} else {
+			console.table(text);
+		}
 	}
 
 	_handleForgotPasswordRequested(values) {
@@ -82,40 +85,6 @@ export default class App extends React.Component {
 		this._log(oldValues);
 		this._log('New values:');
 		this._log(newValues);
-	}
-
-	_emulateLogon(userName, password) {
-		const me = this;
-		me._clearloginMessage();
-		this._emulateServerProcessing(function() {
-			const logonOk = me._areCredentialsCorrect(userName, password);
-			if (logonOk) {
-				me._setLogonSuccessful('Log-in successful. You will soon be redirected to your online crib!');
-			} else {
-				me._setLogonFailed('Invalid credentials. Please try again!');
-			}
-		});
-	}
-
-	_areCredentialsCorrect(userName, password) {
-		const correctCredentials = testData.correctCredentials;
-		return userName == correctCredentials.userName 
-			&& password == correctCredentials.password;
-	}
-
-	_emulateServerProcessing(onReady) {
-		const me = this;
-		const timeout = me._generateTimeout();
-
-		me._setBusy(true);
-		window.setTimeout(function() {
-			me._setBusy(false);
-			onReady();
-		}, timeout);
-	}
-
-	_generateTimeout() {
-		return Math.max(Math.random() * 1000, 250);
 	}
 
 	_handleLoginFormInitialized() {
@@ -132,8 +101,14 @@ export default class App extends React.Component {
 			<LoginBox 
 				disabled={this.state.working}
 				messageProps={this.state.loginMessage}
-				readOnly={true}
+				centered={true}
+				fixed={false}
+				framed={true}
 				underlined={true}
+
+				style={{
+					width: 600
+				}}
 
 				titleProps={{
 					show: false

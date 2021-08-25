@@ -5,6 +5,7 @@ const LoginBoxDefaults = {
 	userName: {
 		label: 'User name:',
 		placeholder: 'Please fill in the username',
+		description: '',
 		messages: {
 			empty: 'You must fill your username'
 		}
@@ -12,6 +13,7 @@ const LoginBoxDefaults = {
 	password: {
 		label: 'Password:',
 		placeholder: 'Please fill in the password',
+		description: '',
 		messages: {
 			empty: 'You must fill in your password'
 		}

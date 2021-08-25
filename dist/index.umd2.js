@@ -302,7 +302,8 @@ var LoginBox = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default().createElement("div", {
-        className: this._computeContainerCssClassName()
+        className: this._computeContainerCssClassName(),
+        style: this._getStyle()
       }, this._renderTitle(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default().createElement("div", {
         className: "lvd-login-box-fields-container"
       }, this._renderMessage(), this._renderUserNameField(), this._renderPasswordField()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default().createElement("div", {
@@ -314,18 +315,52 @@ var LoginBox = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "_computeContainerCssClassName",
     value: function _computeContainerCssClassName() {
-      var className = 'lvd-login-box';
+      var containerClassName = ['lvd-login-box'];
 
       if (this._useFramedLayout()) {
-        className = "".concat(className, " lvd-login-box-framed");
+        containerClassName.push('lvd-login-box-framed');
       }
 
-      return className;
+      if (this._useFixedLayout()) {
+        containerClassName.push('lvd-login-box-fixed');
+      }
+
+      if (this._useCenteredLayout()) {
+        containerClassName.push('lvd-login-box-centered');
+      }
+
+      var className = this._getClassName();
+
+      if (!!className) {
+        containerClassName.push(className);
+      }
+
+      return containerClassName.join(' ');
+    }
+  }, {
+    key: "_getClassName",
+    value: function _getClassName() {
+      return this.props.className || null;
     }
   }, {
     key: "_useFramedLayout",
     value: function _useFramedLayout() {
       return this.props.hasOwnProperty('framed') ? !!this.props.framed : true;
+    }
+  }, {
+    key: "_useFixedLayout",
+    value: function _useFixedLayout() {
+      return this.props.hasOwnProperty('fixed') ? !!this.props.fixed : true;
+    }
+  }, {
+    key: "_useCenteredLayout",
+    value: function _useCenteredLayout() {
+      return this.props.hasOwnProperty('centered') ? !!this.props.centered : true;
+    }
+  }, {
+    key: "_getStyle",
+    value: function _getStyle() {
+      return this.props.style || {};
     }
   }, {
     key: "_renderTitle",
@@ -371,7 +406,7 @@ var LoginBox = /*#__PURE__*/function (_React$Component) {
     value: function _renderUserNameField() {
       var userNameProps = this._getUserNameProps();
 
-      var underlined = this._areFieldsUnderlined();
+      var underlined = this._isUnderlined();
 
       var userNameElement = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default().createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_8__.TextField, {
         label: userNameProps.label,
@@ -379,22 +414,23 @@ var LoginBox = /*#__PURE__*/function (_React$Component) {
         underlined: underlined,
         value: this.state.userName,
         placeholder: userNameProps.placeholder,
+        description: userNameProps.description,
         onChange: this._handleUserNameChanged,
         onGetErrorMessage: this._getUserNameFieldErrorMessage,
         disabled: this._isDisabled(),
-        readOnly: this._areAllFieldsReadonly(),
+        readOnly: this._isReadOnly(),
         className: "lvd-login-box-element lvd-login-box-username"
       });
       return this._renderField(userNameElement);
     }
   }, {
-    key: "_areFieldsUnderlined",
-    value: function _areFieldsUnderlined() {
+    key: "_isUnderlined",
+    value: function _isUnderlined() {
       return !!this.props.underlined;
     }
   }, {
-    key: "_areAllFieldsReadonly",
-    value: function _areAllFieldsReadonly() {
+    key: "_isReadOnly",
+    value: function _isReadOnly() {
       return !!this.props.readOnly;
     }
   }, {
@@ -404,6 +440,7 @@ var LoginBox = /*#__PURE__*/function (_React$Component) {
       return {
         label: userNameProps.label || _LoginBoxDefaults_js__WEBPACK_IMPORTED_MODULE_9__.default.userName.label,
         placeholder: userNameProps.hasOwnProperty('placeholder') ? userNameProps.placeholder || null : _LoginBoxDefaults_js__WEBPACK_IMPORTED_MODULE_9__.default.userName.placeholder,
+        description: userNameProps.description || _LoginBoxDefaults_js__WEBPACK_IMPORTED_MODULE_9__.default.userName.description,
         emptyErrorMessage: userNameProps.emptyErrorMessage || _LoginBoxDefaults_js__WEBPACK_IMPORTED_MODULE_9__.default.userName.messages.empty
       };
     }
@@ -446,7 +483,7 @@ var LoginBox = /*#__PURE__*/function (_React$Component) {
     value: function _renderPasswordField() {
       var passwordProps = this._getPasswordProps();
 
-      var underlined = this._areFieldsUnderlined();
+      var underlined = this._isUnderlined();
 
       var passwordElement = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default().createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_8__.TextField, {
         label: passwordProps.label,
@@ -455,11 +492,12 @@ var LoginBox = /*#__PURE__*/function (_React$Component) {
         underlined: underlined,
         value: this.state.password,
         placeholder: passwordProps.placeholder,
+        description: passwordProps.description,
         onChange: this._handlePasswordChanged,
         onGetErrorMessage: this._getPasswordFieldErrorMessage,
         canRevealPassword: passwordProps.canReveal,
         disabled: this._isDisabled(),
-        readOnly: this._areAllFieldsReadonly(),
+        readOnly: this._isReadOnly(),
         className: "lvd-login-box-element lvd-login-box-password"
       });
       return this._renderField(passwordElement);
@@ -471,6 +509,7 @@ var LoginBox = /*#__PURE__*/function (_React$Component) {
       return {
         label: passwordProps.label || _LoginBoxDefaults_js__WEBPACK_IMPORTED_MODULE_9__.default.password.label,
         placeholder: passwordProps.hasOwnProperty('placeholder') ? passwordProps.placeholder || null : _LoginBoxDefaults_js__WEBPACK_IMPORTED_MODULE_9__.default.password.placeholder,
+        description: passwordProps.description || _LoginBoxDefaults_js__WEBPACK_IMPORTED_MODULE_9__.default.password.description,
         emptyErrorMessage: passwordProps.emptyErrorMessage || _LoginBoxDefaults_js__WEBPACK_IMPORTED_MODULE_9__.default.password.messages.empty,
         canReveal: passwordProps.hasOwnProperty('canReveal') ? !!passwordProps.canReveal : true
       };
@@ -556,10 +595,14 @@ var LoginBox = /*#__PURE__*/function (_React$Component) {
 
 
 LoginBox.propTypes = {
+  className: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().string),
+  style: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().object),
   disabled: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().bool),
   underlined: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().bool),
   readOnly: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().bool),
   framed: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().bool),
+  fixed: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().bool),
+  centered: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().bool),
   titleProps: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().object),
   userNameProps: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().object),
   passwordProps: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().object),
@@ -757,6 +800,7 @@ var LoginBoxDefaults = {
   userName: {
     label: 'User name:',
     placeholder: 'Please fill in the username',
+    description: '',
     messages: {
       empty: 'You must fill your username'
     }
@@ -764,6 +808,7 @@ var LoginBoxDefaults = {
   password: {
     label: 'Password:',
     placeholder: 'Please fill in the password',
+    description: '',
     messages: {
       empty: 'You must fill in your password'
     }

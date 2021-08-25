@@ -19335,19 +19335,26 @@ template {
 }
 
 .lvd-login-box {
-	margin-top: 200px;
+	margin-top: 10px;
 	margin-bottom: 10px;
 	padding: 10px;
+	width: calc(100% - 20px);
 }
 
 .lvd-login-box.lvd-login-box-framed {
-	margin: 0 auto;
-	margin-top: 200px;
-	margin-bottom: 10px;
-	width: 500px;
 	-webkit-box-shadow: 0px 0px 5px 2px rgba(112,111,112,0.45);
 	-moz-box-shadow: 0px 0px 5px 2px rgba(112,111,112,0.45);
 	box-shadow: 0px 0px 5px 2px rgba(112,111,112,0.45);
+}
+
+.lvd-login-box.lvd-login-box-fixed {
+	width: 500px;	
+}
+
+.lvd-login-box.lvd-login-box-centered {
+	margin: 0 auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 .lvd-login-box h4.lvd-login-box-header {
