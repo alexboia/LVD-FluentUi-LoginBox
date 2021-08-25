@@ -262,6 +262,7 @@ A plain javascript object with the following properties:
 | --- | --- | --- |
 | `label` | `string` | Button label. Defaults to `Forgot password?` |
 | `show` | `boolean` | Whether to show the button or not. Defaults to `true` if not specified. |
+| `position` | `PasswordRecoveryButtonPositions` | Button alignment options. Defaults to `PasswordRecoveryButtonPositions.left` if not specified. |
 
 Example: 
 
@@ -270,7 +271,9 @@ Example:
 	...
 	passwordRecoveryActionButtonProps={{
 		label: "I forgot my password",
-		show: true
+		show: true,
+		//align password recovery button to the far-right of the container
+		position: PasswordRecoveryButtonPositions.right 
 	}}
 	...
 />
