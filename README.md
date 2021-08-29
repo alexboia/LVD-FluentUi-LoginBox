@@ -129,7 +129,7 @@ npm run build
 | Set additional inline css style properties | `style` | `object` | Key-value plain javascript object. Defaults to `{}`. |
 | Make component readonly | `readOnly` | `boolean` | Cascades to all fields. Defaults to `false`. |
 | Display fields in underlined style. | `underlined` | `boolean` | Defaults to `false`. |
-| Component Title | `titleProps` | `Title Customization Object` | See below. |
+| Component title | `titleProps` | `Title Customization Object` | See below. |
 | Message | `messageProps` | `Message Object` | See below. By default no message is shown. |
 | Username field | `userNameProps` | `Username Customization Object` | See below. |
 | Password field | `passwordProps` | `Password Customization Object` | See below. |
@@ -293,11 +293,11 @@ The login values are exported as a plain javascript object with the following pr
 
 | Event | Prop Name | Arguments | Notes |
 | --- | --- | --- | --- |
-| Values changed | `onLoginValuesChanged` | (`oldValues`:`Login Values Object`, `newValues`:`Login Values Object`) | Triggered whenever either of the user name or password field changes |
-| Login requested | `onLoginRequested` | (`Login Values Object`) | Triggered when the `Log-in` button is clicked |
-| Password recovery requested | `onForgotPasswordRequested` | (`Login Values Object`) | Triggered when the `Forgot password` button is clicked |
-| Component initialized | `onLoginFormInitialized` | `none` | Triggered when the component is mounted by `React` |
-| Component disposed | `onLoginFormDisposed` | (`Login Values Object`) | Triggered when the component is un-mounted by `React` |
+| Values changed | `onLoginValuesChanged` | (`oldValues`:`Login Values Object`, `newValues`:`Login Values Object`) | Triggered whenever either of the user name or password field changes. |
+| Login requested | `onLoginRequested` | (`Login Values Object`) | Triggered when the `Log-in` button is clicked. |
+| Password recovery requested | `onForgotPasswordRequested` | (`Login Values Object`) | Triggered when the `Forgot password` button is clicked. |
+| Component initialized | `onLoginFormInitialized` | `none` | Triggered when the component is mounted by `React`. |
+| Component disposed | `onLoginFormDisposed` | (`Login Values Object`) | Triggered when the component is un-mounted by `React`. |
 
 ## Changelog
 <a name="lb-changelog"></a>
@@ -318,7 +318,7 @@ The login values are exported as a plain javascript object with the following pr
 
 ### Version 0.0.1
 
-- First tracked version
+- First tracked version.
 
 ## Donate
 <a name="lb-donate"></a>
