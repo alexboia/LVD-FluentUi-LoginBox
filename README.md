@@ -167,7 +167,7 @@ A plain javascript object with the following properties:
 | Name | Type | Notes |
 | --- | --- | --- |
 | `message` | `string` | The actual message to be displayed. Defaults to `null` if not specified.  |
-| `type` | `LoginBoxMessageType` | Type of message - used for formatting (error, warning etc.). Defaults to `null` if not specified. See [here for all supported values](https://github.com/alexboia/LVD-FluentUi-LoginBox/blob/main/src/components/LoginBoxMessageType.js).  |
+| `type` | `LoginBoxMessageType` | Type of message - used for formatting (error, warning etc.). Defaults to `null` if not specified. See [here for all supported values](https://github.com/alexboia/LVD-FluentUi-LoginBox/blob/main/src/components/LoginBoxMessageType.js). |
 
 Example:
 
@@ -260,7 +260,7 @@ A plain javascript object with the following properties:
 
 | Name | Type | Notes |
 | --- | --- | --- |
-| `label` | `string` | Button label. Defaults to `Forgot password?` |
+| `label` | `string` | Button label. Defaults to `Forgot password?`. |
 | `show` | `boolean` | Whether to show the button or not. Defaults to `true` if not specified. |
 | `position` | `PasswordRecoveryButtonPositions` | Button alignment options. Defaults to `PasswordRecoveryButtonPositions.left` if not specified. |
 
@@ -301,6 +301,10 @@ The login values are exported as a plain javascript object with the following pr
 
 ## Changelog
 <a name="lb-changelog"></a>
+
+### Version 0.0.4
+
+- Added type definitions.
 
 ### Version 0.0.3
 
