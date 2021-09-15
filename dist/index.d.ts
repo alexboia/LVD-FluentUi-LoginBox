@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { MessageBarType } from "@fluentui/react";
 
-export declare enum LoginBoxMessageType {
+export enum LoginBoxMessageType {
     info = MessageBarType.info,
 	error = MessageBarType.error,
 	blocked = MessageBarType.blocked,
@@ -10,7 +10,7 @@ export declare enum LoginBoxMessageType {
 	warning = MessageBarType.warning
 }
 
-export declare enum PasswordRecoveryButtonPositions {
+export enum PasswordRecoveryButtonPositions {
 	left = 'left',
 	right = 'right'
 }

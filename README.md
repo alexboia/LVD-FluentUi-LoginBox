@@ -304,6 +304,10 @@ The login values are exported as a plain javascript object with the following pr
 
 ### Version 0.0.4
 
+- Updated type definitions.
+
+### Version 0.0.4
+
 - Added type definitions.
 
 ### Version 0.0.3
