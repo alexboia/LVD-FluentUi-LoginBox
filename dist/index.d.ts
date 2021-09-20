@@ -85,3 +85,8 @@ export declare class LoginBox extends React.Component<ILoginBoxProps, {}> {
 	constructor(props: ILoginBoxProps);
 	render(): JSX.Element;
 }
+
+export declare function successMessage(message:string): ILoginBoxMessageProps;
+export declare function errorMessage(message:string): ILoginBoxMessageProps;
+export declare function warningMessage(message:string): ILoginBoxMessageProps;
+export declare function infoMessage(message:string): ILoginBoxMessageProps;

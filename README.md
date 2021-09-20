@@ -302,6 +302,10 @@ The login values are exported as a plain javascript object with the following pr
 ## Changelog
 <a name="lb-changelog"></a>
 
+### Version 0.0.6
+
+- Updated type definitions.
+
 ### Version 0.0.5
 
 - Updated type definitions.
