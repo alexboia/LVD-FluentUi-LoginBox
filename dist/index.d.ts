@@ -21,8 +21,8 @@ export interface ILoginBoxValues {
 }
 
 export interface ILoginBoxMessageProps {
-	message?: string,
-	type: LoginBoxMessageType
+	message?: string;
+	type: LoginBoxMessageType;
 }
 
 export interface ILoginBoxTitleProps {
